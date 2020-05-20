@@ -108,7 +108,20 @@ public class DonorActivity extends AppCompatActivity {
     }
 
     private boolean validateInput(String mfoodItem, int mshelfLife, int mNoOfPersons, Double mlatitude, Double mlongitude, int hours, int minutes) {
-        if(mfoodItem!="" && mshelfLife>=6&&mNoOfPersons>10&&mlatitude!=0&&mlongitude!=0&&hours>0&&hours<23&&minutes>0){
+       if(mshelfLife < 6)
+       {
+           Toast.makeText(DonorActivity.this, "Shel Life should be greater than 6", Toast.LENGTH_LONG).show();
+       }
+        if(mNoOfPersons < 10)
+        {
+            Toast.makeText(DonorActivity.this, "No of persons should be greater than 10", Toast.LENGTH_LONG).show();
+        }
+        if( mlatitude == 0 || mlongitude == 0)
+        {
+            Toast.makeText(DonorActivity.this, "Enter location first", Toast.LENGTH_LONG).show();
+
+        }
+        if(mfoodItem!="" && mshelfLife>=6&&mNoOfPersons>10&&mlatitude!=0&&mlongitude!=0&&hours>0&&hours<23&&minutes>0) {
             return true;
         }
         return false;

@@ -62,18 +62,32 @@ public class DonationsStatus extends AppCompatActivity {
                 ngoNumber = mobileNo;
                 if(donationStatus==null||donationStatus.equals("")){
                    mstatus.setText("Please make a donation first");
+                    mNgoName.setText("NA");
+                    mNgoNumber.setText("NA");
+
                 }
-                mNgoName.setText(ngoName);
-                mNgoNumber.setText(ngoNumber);
-                mstatus.setText(donationStatus);
-                Log.d("DonationStatus", "Data Snapshot is " + status);
-                Log.d("DonationStatus", "Data Snapshot is " + otp);
-                Log.d("DonationStatus","ngo name  is "+ngoName);
-                Log.d("DonationStatus","ngo number  is "+ngoNumber);
-                OTP = otp;
-                if(donationStatus!=null&&donationStatus.equals(Constants.ACCEPTED)){
-                    sendNotification();
+                else {
+                    if(ngoName.equals(""))
+                    {
+                        ngoName = "NA";
+                    }
+                    if(ngoNumber.equals(""))
+                    {
+                        ngoNumber = "NA";
+                    }
+                    mNgoName.setText(ngoName);
+                    mNgoNumber.setText(ngoNumber);
+                    mstatus.setText(donationStatus);
+                    Log.d("DonationStatus", "Data Snapshot is " + status);
+                    Log.d("DonationStatus", "Data Snapshot is " + otp);
+                    Log.d("DonationStatus","ngo name  is "+ngoName);
+                    Log.d("DonationStatus","ngo number  is "+ngoNumber);
+                    OTP = otp;
+                    if(donationStatus!=null&&donationStatus.equals(Constants.ACCEPTED)){
+                        sendNotification();
+                    }
                 }
+
             }
 
             @Override
