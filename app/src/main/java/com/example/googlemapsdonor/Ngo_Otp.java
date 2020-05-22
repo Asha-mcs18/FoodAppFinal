@@ -2,6 +2,7 @@ package com.example.googlemapsdonor;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -130,6 +131,8 @@ public class Ngo_Otp extends AppCompatActivity {
                 public void dataUpdated(String message) {
                     super.dataUpdated(message);
                     Toast.makeText(Ngo_Otp.this,message,Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(),Ngo_profile.class);
+                    startActivity(intent);
                 }
 
                 @Override

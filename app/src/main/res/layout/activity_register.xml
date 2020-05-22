@@ -31,7 +31,7 @@
         android:ems="10"
         android:fontFamily="sans-serif-condensed-light"
         android:hint="Enter Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         android:textColor="#03A9F4"
         android:textColorHint="#8003A9F4"
         android:textStyle="italic"

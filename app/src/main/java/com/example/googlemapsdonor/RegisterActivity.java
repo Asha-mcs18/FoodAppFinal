@@ -53,6 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else{
+            Log.i("user details",""+ email.getText().toString());
             errorMessage("Please provide details correctly!!");
         }
     }
