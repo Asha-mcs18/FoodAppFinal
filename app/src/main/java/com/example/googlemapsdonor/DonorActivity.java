@@ -79,6 +79,7 @@ public class DonorActivity extends AppCompatActivity {
                 Double mlongitude = Double.parseDouble(longitude);
                 String time = hours +":"+minutes;
                 boolean isValid = validateInput(mfoodItem,mshelfLife,mNoOfPersons,mlatitude,mlongitude,hours,minutes);
+                Log.i("bool","isvalid"+Boolean.toString(isValid));
                 if(isValid){
                     FoodModel food = new FoodModel(mfoodItem,mshelfLife,mNoOfPersons);
                     Log.d("Donor Activity","Food object created ");

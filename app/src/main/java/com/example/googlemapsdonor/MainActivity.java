@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if(currentUser!=null&&currentUser.getUid()!=null){
+        if(currentUser!=null&&currentUser.getUid()!=null && currentUser.isEmailVerified()){
             Constants.currentUser = currentUser.getUid();
             Log.d("Donor role", "role is " +currentUser.getUid());
                 fbUserHandler.readUserRoleByKey(currentUser.getUid(), new DataStatus() {

@@ -85,6 +85,8 @@ public class DonationsStatus extends AppCompatActivity {
                     OTP = otp;
                     if(donationStatus!=null&&donationStatus.equals(Constants.ACCEPTED)){
                         sendNotification();
+//                        Intent intent = new Intent(getApplicationContext(), DonorProfile.class);
+//                        startActivity(intent);
                     }
                 }
 

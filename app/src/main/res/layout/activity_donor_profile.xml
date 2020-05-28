@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     tools:context=".DonorProfile">
 
+
     <Button
         android:id="@+id/createDonation"
         android:layout_width="300dp"
@@ -38,6 +39,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/createDonation" />
 
+    <Button
+        android:id="@+id/signOut"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="56dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/button"
+        android:fontFamily="@font/bubblegum_sans"
+        android:onClick="onSignOut"
+        android:text="Log Out"
+        android:textColor="#F8F3F3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/donationStatus" />
+
+
     <ImageView
         android:id="@+id/image_7"
         android:layout_width="wrap_content"
@@ -47,7 +65,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donationStatus"
+        app:layout_constraintTop_toBottomOf="@+id/signOut"
         app:srcCompat="@drawable/image7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

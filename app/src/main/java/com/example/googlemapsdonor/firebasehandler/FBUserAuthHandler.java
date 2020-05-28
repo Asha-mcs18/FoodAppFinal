@@ -42,6 +42,28 @@ public class FBUserAuthHandler {
                             //account creation successfully
                             //String successMessage = "success account creation";
                             Log.d("USER AUTH","Inside user auth created account!");
+                            FirebaseAuth.getInstance().getCurrentUser().sendEmailVerification()
+                                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful())
+                                            {
+
+                                                       String currentUserId = firebaeAuth.getCurrentUser().getUid();
+                                                    String message = "Email verfication link send.Please verify.";
+                                                Log.d("User AUTH",""+message);
+                                                    dataStatus.dataLoaded(message);
+
+
+                                            }
+                                            else{
+
+                                                errorMessage = "Error Ocurred! Please check your credentials";
+                                                dataStatus.errorOccured(task.getException().getMessage());
+                                            }
+                                        }
+                                    });
+
                             String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                             Log.d("USER AUTH","Inside user auth created account!"+ currentUserId);
                             //dataStatus.dataCreated(successMessage);
@@ -64,14 +86,27 @@ public class FBUserAuthHandler {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             //creds match
-                            String currentUserId = firebaeAuth.getCurrentUser().getUid();
-                            dataStatus.dataLoaded(currentUserId);
+                            if(firebaeAuth.getCurrentUser().isEmailVerified()) {
+                                String currentUserId = firebaeAuth.getCurrentUser().getUid();
+                                dataStatus.dataLoaded(currentUserId);
+                            }
+                            else{
+                                errorMessage = "Error Ocurred! Please verify your email first";
+                                dataStatus.errorOccured(errorMessage);
+                            }
+
+
                         }
                         else{
                             errorMessage = " Error Occurred! Please check your credentials ";
-                            dataStatus.errorOccured(errorMessage);
+                            dataStatus.errorOccured(task.getException().getMessage());
                         }
                     }
                 });
+    }
+    public void signOutUser(){
+        Log.d("logged out"+firebaeAuth.getCurrentUser(),"logged out user");
+        firebaeAuth.signOut();
+
     }
 }
